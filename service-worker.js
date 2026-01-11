@@ -11,13 +11,9 @@ const urlsToCache = [
   "/favourites.html",
   "/about.html",
   "/css/styles.css",
-  "/css/children.css",
-  "/js/main.js",
-  "/js/animals.js",
-  "/js/map.js",
-  "/js/tips.js",
-  "/js/favourites.js",
-  "/js/sensors.js",
+  "/js/theme.js",
+  "/js/install.js",
+  "/js/network-status.js",
   "/data/animals.json"
 ];
 
