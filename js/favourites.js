@@ -1,6 +1,8 @@
 // favourites.js
 // Read favourite animals from localStorage and display them.
 
+const STORAGE_KEY = "jacob-wildlife-favourites";
+
 const favouritesListEl = document.getElementById("favouritesList");
 const favouritesEmptyEl = document.getElementById("favouritesEmptyMessage");
 const favouritesCountEl = document.getElementById("favouritesCount");
@@ -8,7 +10,7 @@ const clearBtn = document.getElementById("clearFavouritesBtn");
 
 function getFavourites() {
   try {
-    return JSON.parse(localStorage.getItem("favourites") || "[]");
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   } catch (e) {
     console.error("Error reading favourites from localStorage", e);
     return [];
@@ -17,6 +19,7 @@ function getFavourites() {
 
 function updateCount(count) {
   if (!favouritesCountEl) return;
+
   if (count === 0) {
     favouritesCountEl.textContent = "You currently have no favourite animals.";
   } else if (count === 1) {
@@ -28,11 +31,9 @@ function updateCount(count) {
 
 function renderFavourites() {
   const favourites = getFavourites();
-
-  // clear existing content
   favouritesListEl.innerHTML = "";
 
-  if (!favourites || favourites.length === 0) {
+  if (favourites.length === 0) {
     favouritesEmptyEl.hidden = false;
     updateCount(0);
     clearBtn.disabled = true;
@@ -71,18 +72,14 @@ function renderFavourites() {
 
 if (clearBtn) {
   clearBtn.addEventListener("click", () => {
-    const favourites = getFavourites();
-    if (!favourites || favourites.length === 0) {
-      return;
-    }
-
-    const confirmed = confirm("Are you sure you want to remove all favourite animals from this device?");
+    const confirmed = confirm(
+      "Are you sure you want to remove all favourite animals from this device?"
+    );
     if (!confirmed) return;
 
-    localStorage.removeItem("favourites");
+    localStorage.removeItem(STORAGE_KEY);
     renderFavourites();
   });
 }
 
-// run on load
 document.addEventListener("DOMContentLoaded", renderFavourites);
