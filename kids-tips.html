@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kids' Wildlife Tips – Jacob Wildlife Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Support both light and dark mode -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Theme color for light mode -->
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+
+    <!-- Theme color for dark mode -->
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/theme.js"></script>
+<script src="js/install.js"></script>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <img src="images/icons/icon-192.png" alt="Jacob Wildlife Centre logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">Jacob Wildlife Centre</span>
+                <span class="brand-tagline">Liverpool area · UK</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="animals.html" class="nav-link">Animals</a>
+            <a href="map.html" class="nav-link">Map</a>
+            <a href="kids-tips.html" class="nav-link active">Kids</a>
+            <a href="favourites.html" class="nav-link">Favourites</a>
+            <a href="about.html" class="nav-link">About</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                🌙
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <!-- Intro -->
+    <section class="section section-kids">
+        <div class="section-inner kids-inner">
+            <h2>Kids' wildlife tips</h2>
+            <p class="kids-intro">
+                These simple ideas help children look after wildlife in their local area.
+                All tips are designed for primary school children with adult supervision.
+            </p>
+
+            <div class="kids-grid">
+
+                <article class="kids-card">
+                    <h3>💧 Give fresh water</h3>
+                    <p>
+                        Ask an adult to help you place a shallow dish of clean water in your garden or balcony.
+                        Birds and small animals can drink from it, especially on hot days.
+                    </p>
+                </article>
+
+                <article class="kids-card">
+                    <h3>🍂 Leave a wild corner</h3>
+                    <p>
+                        Not every space needs to be tidy. A small corner with leaves and sticks can become a safe
+                        hiding place for insects, hedgehogs and other wildlife.
+                    </p>
+                </article>
+
+                <article class="kids-card">
+                    <h3>🚫 Never touch baby animals</h3>
+                    <p>
+                        If you see a baby animal alone, do not pick it up. The parents are often close by.
+                        Tell an adult and contact a rescue centre if you are worried.
+                    </p>
+                </article>
+
+                <article class="kids-card">
+                    <h3>🗑️ Take your litter home</h3>
+                    <p>
+                        Plastic, cans and food wrappers can harm animals. Always put rubbish in a bin
+                        or take it home with you after a picnic or walk.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="kids-random">
+                <button id="randomTipBtn" class="btn btn-primary">
+                    Show me a random tip
+                </button>
+                <p id="randomTipText" class="kids-random-text">
+                    Tap the button to get a random tip you can try this week.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-link">Home</a>
+    <a href="animals.html" class="bottom-link bottom-link-active">Animals</a>
+    <a href="map.html" class="bottom-link">Map</a>
+    <a href="kids-tips.html" class="bottom-link">Kids</a>
+</nav>
+
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img src="images/icons/icon-192.png" alt="Logo" class="footer-logo">
+            <div>
+                <h3>Jacob Wildlife Centre</h3>
+                <p>Liverpool area, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="animals.html">Animals</a>
+            <a href="map.html">Map</a>
+            <a href="kids-tips.html">Kids</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 Jacob Wildlife Centre — Mobile Web App Project</p>
+            <p class="footer-small">
+                This website was created for a university assignment to demonstrate responsive design,
+                PWA features and user-centred interaction.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="js/kids-tips.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>

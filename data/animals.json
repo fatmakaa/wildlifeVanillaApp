@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fox",
+    "name": "Red Fox",
+    "location": "Woodland enclosure",
+    "description": "A rescued fox recovering from a leg injury after a road accident.",
+    "image": "images/animals/fox.webp"
+  },
+  {
+    "id": "hedgehog",
+    "name": "Hedgehog",
+    "location": "Hedgehog house",
+    "description": "Several young hedgehogs being cared for until they reach a safe weight for release.",
+    "image": "images/animals/hedgehog.webp"
+  },
+  {
+    "id": "owl",
+    "name": "Barn Owl",
+    "location": "Aviary",
+    "description": "An owl with damaged wing feathers being rehabilitated before returning to the wild.",
+    "image": "images/animals/owl.webp"
+  },
+  {
+    "id": "squirrel",
+    "name": "Grey Squirrel",
+    "location": "Garden enclosure",
+    "description": "A young grey squirrel being cared for after falling from a tree.",
+    "image": "images/animals/squirrel.webp"
+  }
+]

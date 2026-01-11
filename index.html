@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jacob Wildlife Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PWA -->
+    <!-- Support both light and dark mode -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Theme color for light mode -->
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+
+    <!-- Theme color for dark mode -->
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/theme.js"></script>
+<script src="js/install.js"></script>
+<script src="js/network-status.js" defer></script>
+<body>
+
+<!-- TOP HEADER / NAVBAR -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <img src="images/icons/icon-192.png" alt="Jacob Wildlife Centre logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">Jacob Wildlife Centre</span>
+                <span class="brand-tagline">Liverpool area · UK</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="animals.html" class="nav-link">Animals</a>
+            <a href="map.html" class="nav-link">Map</a>
+            <a href="kids-tips.html" class="nav-link">Kids</a>
+            <a href="favourites.html" class="nav-link">Favourites</a>
+            <a href="about.html" class="nav-link">About</a>
+
+            <!-- Theme toggle -->
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                🌙
+            </button>
+
+            <!-- Install button (initially hidden, JS will show) -->
+            <button id="installButton" class="install-btn" hidden>
+                ⬇ <span>Install app</span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN PAGE CONTENT -->
+<main>
+    <!-- HERO SECTION (FULL-WIDTH VIDEO) -->
+    <section class="hero">
+
+        <!-- FULL-WIDTH BACKGROUND VIDEO -->
+        <video class="hero-video"
+               src="videos/centre-hero.mp4"
+               autoplay
+               muted
+               loop
+               playsinline></video>
+
+        <!-- TEXT OVERLAY -->
+        <div class="hero-overlay">
+
+            <h1>Helping injured British wildlife recover</h1>
+
+            <p class="hero-description">
+                Jacob Wildlife Centre is a small rescue and rehabilitation centre near Liverpool.
+                We care for sick, injured and orphaned wild animals and return them to the wild
+                whenever it is safe to do so.
+            </p>
+
+            <div class="hero-actions">
+                <a href="animals.html" class="btn btn-primary">Meet the animals</a>
+                <a href="map.html" class="btn btn-secondary">See centre map</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- WHY SECTION -->
+    <section class="section section-text">
+        <div class="section-inner">
+            <h2>Why this centre exists</h2>
+            <p>
+                Every year, many British animals are hurt by cars, litter, garden tools or loss of habitat.
+                Without help, many of them would not survive. Jacob Wildlife Centre provides emergency care,
+                safe enclosures and professional treatment so that wildlife can return to healthy, natural lives.
+            </p>
+            <p>
+                When release is not possible, the centre offers a calm, enriched environment for animals that
+                need a permanent home.
+            </p>
+        </div>
+    </section>
+
+    <!-- NUMBERS SECTION -->
+    <section class="section section-numbers">
+        <div class="section-inner">
+            <h2>Our work in numbers</h2>
+            <div class="number-grid">
+                <article class="number-card">
+                    <span class="number-main">120+</span>
+                    <span class="number-label">animals treated each year</span>
+                </article>
+                <article class="number-card">
+                    <span class="number-main">65%</span>
+                    <span class="number-label">released back into the wild</span>
+                </article>
+                <article class="number-card">
+                    <span class="number-main">40</span>
+                    <span class="number-label">local schools we work with</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW WE HELP SECTION -->
+    <section class="section section-cards">
+        <div class="section-inner">
+            <h2>How we help</h2>
+            <div class="card-grid">
+                <article class="info-card">
+                    <h3>Rescue</h3>
+                    <p>
+                        Local residents, vets and organisations contact the centre when they find injured or orphaned
+                        wildlife.
+                        Our volunteers help to transport animals safely to the centre.
+                    </p>
+                </article>
+                <article class="info-card">
+                    <h3>Rehabilitate</h3>
+                    <p>
+                        Animals receive medical treatment, food, clean water and quiet spaces.
+                        Staff carefully monitor their health and behaviour every day.
+                    </p>
+                </article>
+                <article class="info-card">
+                    <h3>Release or lifelong care</h3>
+                    <p>
+                        When animals are strong enough, they are released back into suitable habitats.
+                        Others stay at the centre in long-term enclosures designed for their needs.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU CAN DO SECTION -->
+    <section class="section section-actions">
+        <div class="section-inner">
+            <h2>What you can do</h2>
+            <div class="action-grid">
+                <article class="action-card">
+                    <h3>Visit the centre</h3>
+                    <p>Use the interactive map to explore the site and find each animal enclosure.</p>
+                    <a href="map.html" class="text-link">Open map →</a>
+                </article>
+                <article class="action-card">
+                    <h3>Learn about our animals</h3>
+                    <p>Read about the foxes, hedgehogs, owls and badgers currently in our care.</p>
+                    <a href="animals.html" class="text-link">View animals →</a>
+                </article>
+                <article class="action-card">
+                    <h3>Teach your class</h3>
+                    <p>Use the kids' tips page to help primary school children care for local wildlife.</p>
+                    <a href="kids-tips.html" class="text-link">Kids tips →</a>
+                </article>
+                <article class="action-card">
+                    <h3>Save your favourites</h3>
+                    <p>On this device you can save favourite animals and come back to them later.</p>
+                    <a href="favourites.html" class="text-link">View favourites →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <p class="footer-main">
+            Jacob Wildlife Centre · Student project for a mobile web application brief.
+        </p>
+        <p class="footer-meta">
+            Built to explore how web technologies can support wildlife conservation and education.
+        </p>
+    </div>
+</footer>
+
+<!-- JS (şimdilik sadece service worker kaydı; diğer JS dosyalarını sonra ekleriz) -->
+<script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+
+</script>
+
+</body>
+
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-link bottom-link-active">Home</a>
+    <a href="animals.html" class="bottom-link">Animals</a>
+    <a href="map.html" class="bottom-link">Map</a>
+    <a href="kids-tips.html" class="bottom-link">Kids</a>
+</nav>
+
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img src="images/icons/icon-192.png" alt="Logo" class="footer-logo">
+            <div>
+                <h3>Jacob Wildlife Centre</h3>
+                <p>Liverpool area, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="animals.html">Animals</a>
+            <a href="map.html">Map</a>
+            <a href="kids-tips.html">Kids</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 Jacob Wildlife Centre — Mobile Web App Project</p>
+            <p class="footer-small">
+                This website was created for a university assignment to demonstrate responsive design,
+                PWA features and user-centred interaction.
+            </p>
+        </div>
+
+        <!-- Network status indicator -->
+        <p id="network-status" class="network-status" aria-live="polite">
+            You are online.
+        </p>
+
+    </div>
+</footer>
+</html>
+
+
+
+
+

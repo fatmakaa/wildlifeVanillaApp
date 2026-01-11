@@ -1,0 +1,1204 @@
+/* ---------- Global reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Design tokens (light & dark) ---------- */
+
+/* Default: light mode */
+:root {
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-text-main: #111827;
+  --color-text-muted: #6b7280;
+  --color-brand: #166534;
+  --color-brand-soft: #bbf7d0;
+  --color-brand-strong: #15803d;
+}
+
+/* Device prefers dark → use soft forest palette by default */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1a17;            /* deep forest green background */
+    --color-surface: #182421;       /* main surface for cards and panels */
+    --color-surface-soft: #1f2f2b;  /* slightly softer surface */
+    --color-border: #24332f;        /* subtle border color */
+
+    --color-text-main: #f1f5f9;     /* main text color */
+    --color-text-muted: #94a3b8;    /* muted text color */
+
+    --color-brand: #34d399;                 /* emerald green accent */
+    --color-brand-soft: rgba(52, 211, 153, 0.18); /* soft accent background */
+    --color-brand-strong: #10b981;         /* strong accent */
+  }
+}
+
+/* Manual overrides via classes – these WIN over media query */
+:root.light-mode {
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-text-main: #111827;
+  --color-text-muted: #6b7280;
+  --color-brand: #166534;
+  --color-brand-soft: #bbf7d0;
+  --color-brand-strong: #15803d;
+}
+
+/* Manual dark mode override – soft forest theme */
+:root.dark-mode {
+  --color-bg: #0f1a17;            /* deep forest green background */
+  --color-surface: #182421;       /* main surface for cards and panels */
+  --color-surface-soft: #1f2f2b;  /* slightly softer surface */
+  --color-border: #24332f;        /* subtle border color */
+
+  --color-text-main: #f1f5f9;     /* main text color */
+  --color-text-muted: #94a3b8;    /* muted text color */
+
+  --color-brand: #34d399;                 /* emerald green accent */
+  --color-brand-soft: rgba(52, 211, 153, 0.18); /* soft accent background */
+  --color-brand-strong: #10b981;         /* strong accent */
+}
+
+/* ---------- Body & layout ---------- */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 55%),
+    var(--color-bg);
+  color: var(--color-text-main);
+}
+
+/* Container helper */
+.section-inner,
+.header-inner,
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.7rem 2rem;
+}
+
+/* ---------- Header / navbar ---------- */
+
+.site-header {
+  position: static;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+  background: rgba(249, 250, 251, 0.96);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.brand-tagline {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+/* Push the theme toggle (and everything after it) to the far right */
+.theme-toggle {
+  margin-left: auto;
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nav-link:hover {
+  background: var(--color-surface-soft);
+  color: var(--color-text-main);
+}
+
+.nav-link.active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-strong);
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.25);
+}
+
+/* ---------- Install button (header) ---------- */
+
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.9rem;
+  margin-left: 0.4rem;
+
+  background: var(--color-brand);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  box-shadow: 0 10px 24px rgba(22, 101, 52, 0.35);
+  transition:
+    background 0.18s ease,
+    transform 0.12s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.install-btn:hover {
+  background: var(--color-brand-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(22, 101, 52, 0.4);
+}
+
+.install-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 6px 16px rgba(22, 101, 52, 0.3);
+}
+
+/* On small screens hide the text and show only the icon */
+.install-btn span {
+  margin-left: 0.15rem;
+}
+
+@media (max-width: 480px) {
+  .install-btn span {
+    display: none;
+  }
+}
+
+/* ---------- HERO: FULL-WIDTH VIDEO ---------- */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 380px;
+  max-height: 750px;
+  overflow: hidden;
+  margin: 0;
+  padding-top: 0.8rem; /* space between header and video */
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(78%);
+}
+
+/* Overlay text centered on top of the video */
+.hero-overlay {
+  position: absolute;
+  z-index: 2;
+
+  /* Center the block vertically and horizontally */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #bbf7d0;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.hero-overlay h1 {
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.hero-description {
+  font-size: 1rem;
+  max-width: 720px;
+  margin: 0 auto 1.3rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(22, 101, 52, 0.28);
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px rgba(22, 101, 52, 0.34);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--color-brand);
+  border-color: var(--color-brand-soft);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-soft);
+  transform: translateY(-1px);
+}
+
+.btn-disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Mobile tweak: move overlay slightly higher */
+@media (max-width: 600px) {
+  .hero-overlay {
+    top: 46%;
+    transform: translate(-50%, -46%);
+  }
+}
+
+/* ---------- Generic section styles ---------- */
+
+.section {
+  padding: 2.7rem 0;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.section:first-of-type {
+  border-top: none;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* Text-only section */
+.section-text p + p {
+  margin-top: 0.6rem;
+}
+
+/* Numbers section */
+.section-numbers {
+  background: linear-gradient(to right, rgba(240, 253, 244, 0.9), rgba(239, 246, 255, 0.9));
+}
+
+.number-grid {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.number-card {
+  background: var(--color-surface);
+  border-radius: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.number-main {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-brand);
+  margin-bottom: 0.25rem;
+}
+
+.number-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Info cards (How we help) */
+
+.section-cards .card-grid {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.info-card {
+  background: var(--color-surface);
+  border-radius: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.info-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-card p {
+  font-size: 0.92rem;
+}
+
+/* Action cards (What you can do) */
+
+.section-actions {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.action-grid {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.action-card {
+  background: var(--color-surface-soft);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+}
+
+.action-card h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.45rem;
+}
+
+.action-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.text-link {
+  font-size: 0.9rem;
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: rgba(249, 250, 251, 0.92);
+  padding: 2.2rem 0;
+}
+
+.footer-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+/* Logo section */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.footer-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(22, 101, 52, 0.25);
+}
+
+.footer-brand h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.15rem;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Footer links */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.4rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-brand-strong);
+}
+
+/* Copyright section */
+.footer-copy {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+
+.footer-copy p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.footer-small {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Responsive footer */
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* Small network status indicator in the footer */
+.network-status {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(148, 163, 184, 0.15); /* soft grey background */
+}
+
+/* Online state styling */
+.network-status.online {
+  background: rgba(16, 185, 129, 0.12);  /* soft green */
+  color: #16a34a;
+}
+
+/* Offline state styling */
+.network-status.offline {
+  background: rgba(239, 68, 68, 0.12);   /* soft red */
+  color: #b91c1c;
+}
+
+/* ---------- Responsive (tablet & mobile, general) ---------- */
+
+@media (max-width: 900px) {
+  .hero {
+    height: 50vh;
+    min-height: 320px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+  }
+
+  .number-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .section-cards .card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Extra small screens adjustments */
+@media (max-width: 600px) {
+  .hero {
+    height: 45vh;
+  }
+
+  .action-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .header-inner {
+    padding-inline: 1rem;
+  }
+
+  .section-inner {
+    padding-inline: 1rem;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* Page-specific layouts and components                         */
+/* ------------------------------------------------------------ */
+
+/* ---------- Animals page cards ---------- */
+
+.section-animals {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.animal-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+}
+
+/* Main card container */
+.animal-card {
+  background: var(--color-surface);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  cursor: pointer; /* card is clickable for details */
+}
+
+/* When the card is expanded, make it visually stronger */
+.animal-card.expanded {
+  border-color: var(--color-brand);
+  box-shadow: 0 16px 36px rgba(22, 163, 74, 0.25);
+}
+
+/* Photo + text side by side */
+.animal-content {
+  display: flex;
+  gap: 0.95rem;
+  align-items: flex-start;
+}
+
+/* Small photo at the left */
+.animal-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 0.9rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+}
+
+/* Header row: name + location */
+.animal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.animal-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.animal-location {
+  font-size: 0.85rem;
+  color: #2563eb; /* light blue highlight */
+}
+
+/* Short description (always visible) */
+.animal-description {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin: 0.45rem 0 0.4rem;
+}
+
+/* Extra details (hidden by default, shown when card is expanded) */
+.animal-extra {
+  display: none;                 /* IMPORTANT: hidden initially */
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+  font-style: italic;            /* detail text feels like a note */
+}
+
+/* When the card has .expanded class, show the extra text */
+.animal-card.expanded .animal-extra {
+  display: block;
+}
+
+/* Favourites button container */
+.animal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---------- Map page ---------- */
+
+.section-map {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.map-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.map-status {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.map-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.map-info p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Map container */
+.map-frame-wrapper {
+  border-radius: 1.2rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  background: #e5e7eb;
+}
+
+.map-frame {
+  width: 100%;
+  height: 360px;
+  display: block;
+}
+
+/* Responsive map layout */
+@media (max-width: 900px) {
+  .map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .map-frame {
+    height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .map-frame {
+    height: 280px;
+  }
+}
+
+/* ---------- Kids page ---------- */
+
+.section-kids {
+  background: linear-gradient(
+    135deg,
+    rgba(254, 249, 195, 0.9),
+    rgba(254, 243, 199, 0.95)
+  );
+}
+
+.kids-inner {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.kids-intro {
+  font-size: 0.95rem;
+  color: #92400e;
+  max-width: 640px;
+  margin-bottom: 1.3rem;
+  line-height: 1.6;
+}
+
+.kids-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.kids-card {
+  background: #ffffff;
+  border-radius: 1.1rem;
+  padding: 1rem;
+  border: 2px dashed #fed7aa;
+  box-shadow: 0 14px 30px rgba(148, 92, 26, 0.2);
+}
+
+.kids-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.kids-card p {
+  font-size: 0.9rem;
+  color: #7c2d12;
+  line-height: 1.6;
+}
+
+.kids-random {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.kids-random-text {
+  font-size: 0.9rem;
+  color: #7c2d12;
+}
+
+/* Responsive for kids page */
+@media (max-width: 800px) {
+  .kids-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Favourites page ---------- */
+
+.section-favourites {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.favourites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.75rem;
+}
+
+.favourites-count {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.favourites-empty {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Mobile: button below text */
+@media (max-width: 600px) {
+  .favourites-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- About page ---------- */
+
+.section-about,
+.section-about-tech {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.section-about-tech {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 253, 244, 0.9),
+    rgba(239, 246, 255, 0.95)
+  );
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.about-text p + p {
+  margin-top: 0.6rem;
+}
+
+.about-highlight {
+  background: var(--color-surface-soft);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+
+.about-highlight h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-highlight ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-highlight li {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.about-highlight li::before {
+  content: "•";
+  position: absolute;
+  left: 0.2rem;
+  color: var(--color-brand);
+}
+
+/* Responsive about layout */
+@media (max-width: 900px) {
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Mobile bottom navigation ---------- */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  background: rgba(249, 250, 251, 0.96);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -8px 25px rgba(15, 23, 42, 0.12);
+}
+
+/* Bottom nav links */
+.bottom-link {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: 0.35rem 0.5rem;
+  border-radius: 999px;
+}
+
+.bottom-link-active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-strong);
+  font-weight: 600;
+}
+
+/* Hide bottom navigation on tablets and larger screens */
+@media (min-width: 768px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* Bottom space on mobile so the footer is not overlapped */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 3.5rem; /* padding equal to height of bottom nav */
+  }
+}
+
+/* ---------- Theme Toggle Button ---------- */
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark preference hover tweak */
+@media (prefers-color-scheme: dark) {
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* ============================================================ */
+/* DARK MODE OVERRIDES – Soft Forest Theme                      */
+/* These rules only apply when :root has .dark-mode             */
+/* ============================================================ */
+
+/* Full-page background in dark mode */
+:root.dark-mode body {
+  background:
+    radial-gradient(circle at top left, rgba(52, 211, 153, 0.08), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.08), transparent 55%),
+    var(--color-bg);
+  color: var(--color-text-main);
+}
+
+/* Header in dark mode */
+:root.dark-mode .site-header {
+  background: rgba(15, 26, 23, 0.95);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Footer in dark mode */
+:root.dark-mode .site-footer {
+  background: rgba(15, 26, 23, 0.95);
+  border-top: 1px solid var(--color-border);
+}
+
+:root.dark-mode .footer-main {
+  color: var(--color-text-main);
+}
+
+:root.dark-mode .footer-meta,
+:root.dark-mode .footer-copy p,
+:root.dark-mode .footer-small {
+  color: var(--color-text-muted);
+}
+
+/* Sections in dark mode – make all main sections use dark surfaces */
+:root.dark-mode .section,
+:root.dark-mode .section-animals,
+:root.dark-mode .section-map,
+:root.dark-mode .section-kids,
+:root.dark-mode .section-favourites,
+:root.dark-mode .section-about,
+:root.dark-mode .section-about-tech {
+  background: var(--color-surface);
+  border-top-color: var(--color-border);
+}
+
+/* Cards and panels in dark mode */
+:root.dark-mode .number-card,
+:root.dark-mode .info-card,
+:root.dark-mode .action-card,
+:root.dark-mode .animal-card,
+:root.dark-mode .kids-card,
+:root.dark-mode .about-highlight,
+:root.dark-mode .favourite-card {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Text inside cards in dark mode */
+:root.dark-mode .number-label,
+:root.dark-mode .info-card p,
+:root.dark-mode .action-card p,
+:root.dark-mode .animal-description,
+:root.dark-mode .kids-card p,
+:root.dark-mode .map-info p,
+:root.dark-mode .map-status {
+  color: var(--color-text-muted);
+}
+
+/* Navigation links in dark mode */
+:root.dark-mode .nav-link {
+  color: var(--color-text-muted);
+}
+
+:root.dark-mode .nav-link:hover {
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--color-text-main);
+}
+
+/* Active nav link in dark mode */
+:root.dark-mode .nav-link.active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-strong);
+}
+
+/* Bottom mobile navigation in dark mode */
+:root.dark-mode .bottom-nav {
+  background: rgba(15, 26, 23, 0.96);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -10px 26px rgba(0, 0, 0, 0.6);
+}
+
+:root.dark-mode .bottom-link {
+  color: var(--color-text-muted);
+}
+
+:root.dark-mode .bottom-link-active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-strong);
+}
+
+/* Buttons in dark mode */
+:root.dark-mode .btn-primary {
+  background: var(--color-brand);
+  color: #0f1a17;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
+:root.dark-mode .btn-primary:hover {
+  background: var(--color-brand-strong);
+}
+
+:root.dark-mode .btn-secondary {
+  background: var(--color-surface-soft);
+  color: var(--color-brand);
+  border-color: var(--color-border);
+}
+
+:root.dark-mode .btn-secondary:hover {
+  background: #263834;
+}
+
+/* Install button in dark mode */
+:root.dark-mode #installButton,
+:root.dark-mode .install-btn {
+  background: var(--color-brand);
+  color: #0f1a17;
+}
+
+:root.dark-mode #installButton:hover,
+:root.dark-mode .install-btn:hover {
+  background: var(--color-brand-strong);
+}
+
+/* Theme toggle hover in dark mode */
+:root.dark-mode .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Hero text in dark mode – keep readable over the video */
+:root.dark-mode .hero-overlay h1 {
+  color: #f8fafc;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.55);
+}
+
+:root.dark-mode .hero-description {
+  color: #d1d5db;
+}
+
+/* Kids page in dark mode – keep it playful but darker */
+:root.dark-mode .section-kids {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 64, 54, 0.95),
+    rgba(22, 101, 52, 0.95)
+  );
+}
+
+:root.dark-mode .kids-card {
+  background: #1f2933;
+  border-color: #fed7aa;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.6);
+}
+
+:root.dark-mode .kids-intro,
+:root.dark-mode .kids-card p,
+:root.dark-mode .kids-random-text {
+  color: #fef9c3;
+}
+
+

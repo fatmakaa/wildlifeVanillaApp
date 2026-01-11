@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favourite Animals – Jacob Wildlife Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Support both light and dark mode -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Theme color for light mode -->
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+
+    <!-- Theme color for dark mode -->
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/theme.js"></script>
+<script src="js/install.js"></script>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <img src="images/icons/icon-192.png" alt="Jacob Wildlife Centre logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">Jacob Wildlife Centre</span>
+                <span class="brand-tagline">Liverpool area · UK</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="animals.html" class="nav-link">Animals</a>
+            <a href="map.html" class="nav-link">Map</a>
+            <a href="kids-tips.html" class="nav-link">Kids</a>
+            <a href="favourites.html" class="nav-link active">Favourites</a>
+            <a href="about.html" class="nav-link">About</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                🌙
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <!-- Intro -->
+    <section class="section section-text">
+        <div class="section-inner">
+            <h2>Favourite animals</h2>
+            <p>
+                These animals have been saved on this device. You can use this list during a visit
+                to quickly find the animals you are most interested in.
+            </p>
+        </div>
+    </section>
+
+
+
+
+    <!-- Favourites list -->
+    <section class="section section-animals section-favourites">
+        <div class="section-inner">
+
+            <div class="favourites-header">
+                <p id="favouritesCount" class="favourites-count">
+                    Loading favourites…
+                </p>
+                <button id="clearFavouritesBtn" class="btn btn-secondary">
+                    Clear favourites
+                </button>
+            </div>
+
+            <div id="favouritesList" class="animal-list">
+                <!-- Favourite animal cards will be rendered here by favourites.js -->
+            </div>
+
+            <p id="favouritesEmptyMessage" class="favourites-empty" hidden>
+                You have no favourite animals yet. Visit the animals page and tap
+                “Add to favourites” on any animal you want to remember.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-link">Home</a>
+    <a href="animals.html" class="bottom-link bottom-link-active">Animals</a>
+    <a href="map.html" class="bottom-link">Map</a>
+    <a href="kids-tips.html" class="bottom-link">Kids</a>
+    <a href="favourites.html" class="bottom-link">Favourites</a>
+
+</nav>
+
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img src="images/icons/icon-192.png" alt="Logo" class="footer-logo">
+            <div>
+                <h3>Jacob Wildlife Centre</h3>
+                <p>Liverpool area, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="animals.html">Animals</a>
+            <a href="map.html">Map</a>
+            <a href="kids-tips.html">Kids</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 Jacob Wildlife Centre — Mobile Web App Project</p>
+            <p class="footer-small">
+                This website was created for a university assignment to demonstrate responsive design,
+                PWA features and user-centred interaction.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="js/favourites.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+.kids-page {
+  font-family: "Comic Sans MS", "Comic Neue", system-ui, sans-serif;
+}
+
+.kids-heading {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.kids-intro {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.kids-tips-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.kids-tip-card {
+  background: #fef3c7;
+  border-radius: 1rem;
+  padding: 0.9rem;
+  border: 2px dashed #f97316;
+}
+
+.kids-tip-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.kids-tip-text {
+  font-size: 0.95rem;
+}
+
+.kids-emoji {
+  font-size: 1.5rem;
+  margin-right: 0.3rem;
+}
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About – Jacob Wildlife Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Support both light and dark mode -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Theme color for light mode -->
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+
+    <!-- Theme color for dark mode -->
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/theme.js"></script>
+<script src="js/install.js"></script>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <img src="images/icons/icon-192.png" alt="Jacob Wildlife Centre logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">Jacob Wildlife Centre</span>
+                <span class="brand-tagline">Liverpool area · UK</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="animals.html" class="nav-link">Animals</a>
+            <a href="map.html" class="nav-link">Map</a>
+            <a href="kids-tips.html" class="nav-link">Kids</a>
+            <a href="favourites.html" class="nav-link">Favourites</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                🌙
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <!-- About the centre -->
+    <section class="section section-about">
+        <div class="section-inner about-layout">
+            <div class="about-text">
+                <h2>About Jacob Wildlife Centre</h2>
+                <p>
+                    Jacob Wildlife Centre is a small fictional rescue and rehabilitation centre based near Liverpool.
+                    The centre cares for British wild animals that are sick, injured or orphaned. When animals are well
+                    enough, staff release them back into safe local habitats.
+                </p>
+                <p>
+                    The stories and animals shown in this app are inspired by real wildlife rescue work, but they have
+                    been created for educational purposes. The aim is to help visitors understand why wildlife centres
+                    are important and how people can support them.
+                </p>
+            </div>
+
+            <div class="about-highlight">
+                <h3>What the centre does</h3>
+                <ul>
+                    <li>Responds to calls about injured or orphaned wildlife.</li>
+                    <li>Provides safe enclosures, food and medical treatment.</li>
+                    <li>Works with local schools to teach children about wildlife.</li>
+                    <li>Releases animals when they are ready to live in the wild again.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About this app -->
+    <section class="section section-about-tech">
+        <div class="section-inner about-layout">
+            <div class="about-text">
+                <h2>About this web app</h2>
+                <p>
+                    This web app was created as part of a university assignment on mobile web applications.
+                    The design focuses on clear navigation, readable content and simple interactions that
+                    work well on phones, tablets and laptops.
+                </p>
+                <p>
+                    The app demonstrates how modern web technologies can support visitor information for a
+                    small wildlife centre, without requiring a native mobile application.
+                </p>
+            </div>
+
+            <div class="about-highlight">
+                <h3>Key features</h3>
+                <ul>
+                    <li>Responsive layout that adapts to different screen sizes.</li>
+                    <li>Animals loaded from a JSON data file using JavaScript.</li>
+                    <li>Favourite animals stored on the device with <code>localStorage</code>.</li>
+                    <li>Map page that uses the browser’s geolocation API.</li>
+                    <li>Progressive Web App (PWA) support with a manifest and service worker.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-link">Home</a>
+    <a href="animals.html" class="bottom-link bottom-link-active">Animals</a>
+    <a href="map.html" class="bottom-link">Map</a>
+    <a href="kids-tips.html" class="bottom-link">Kids</a>
+</nav>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img src="images/icons/icon-192.png" alt="Logo" class="footer-logo">
+            <div>
+                <h3>Jacob Wildlife Centre</h3>
+                <p>Liverpool area, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="animals.html">Animals</a>
+            <a href="map.html">Map</a>
+            <a href="kids-tips.html">Kids</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 Jacob Wildlife Centre — Mobile Web App Project</p>
+            <p class="footer-small">
+                This website was created for a university assignment to demonstrate responsive design,
+                PWA features and user-centred interaction.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- JS -->
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>

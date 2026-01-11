@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map & Your Location – Jacob Wildlife Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Support both light and dark mode -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Theme color for light mode -->
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+
+    <!-- Theme color for dark mode -->
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<script src="js/theme.js"></script>
+<script src="js/install.js"></script>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <img src="images/icons/icon-192.png" alt="Jacob Wildlife Centre logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">Jacob Wildlife Centre</span>
+                <span class="brand-tagline">Liverpool area · UK</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="animals.html" class="nav-link">Animals</a>
+            <a href="map.html" class="nav-link active">Map</a>
+            <a href="kids-tips.html" class="nav-link">Kids</a>
+            <a href="favourites.html" class="nav-link">Favourites</a>
+            <a href="about.html" class="nav-link">About</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                🌙
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <!-- Intro -->
+    <section class="section section-text">
+        <div class="section-inner">
+            <h2>Map & your location</h2>
+            <p>
+                This map shows the general area of Jacob Wildlife Centre and its surroundings.
+                You can use the “Find my location” button to see how far you are from the centre
+                when you visit with a phone or tablet.
+            </p>
+        </div>
+    </section>
+
+    <!-- Map section -->
+    <section class="section section-map">
+        <div class="section-inner">
+
+            <div class="map-layout">
+                <div class="map-controls">
+                    <button id="locateBtn" class="btn btn-primary">Find my location</button>
+                    <p id="locationStatus" class="map-status">
+                        Your location has not been detected yet.
+                    </p>
+                </div>
+
+                <div class="map-info">
+                    <h3>Centre location</h3>
+                    <p>
+                        The marker on the map shows the approximate location of Jacob Wildlife Centre
+                        near Liverpool. When you allow location access, the map will zoom to your area.
+                    </p>
+                </div>
+            </div>
+
+            <div class="map-frame-wrapper">
+                <!-- OpenStreetMap iframe; src JavaScript ile de güncellenebilir -->
+                <iframe
+                        id="mapFrame"
+                        class="map-frame"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-3.1%2C53.35%2C-2.8%2C53.5&layer=mapnik&marker=53.4084%2C-2.9916"
+                        style="border: 0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-link">Home</a>
+    <a href="animals.html" class="bottom-link bottom-link-active">Animals</a>
+    <a href="map.html" class="bottom-link">Map</a>
+    <a href="kids-tips.html" class="bottom-link">Kids</a>
+</nav>
+
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img src="images/icons/icon-192.png" alt="Logo" class="footer-logo">
+            <div>
+                <h3>Jacob Wildlife Centre</h3>
+                <p>Liverpool area, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="animals.html">Animals</a>
+            <a href="map.html">Map</a>
+            <a href="kids-tips.html">Kids</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 Jacob Wildlife Centre — Mobile Web App Project</p>
+            <p class="footer-small">
+                This website was created for a university assignment to demonstrate responsive design,
+                PWA features and user-centred interaction.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="js/map.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>
